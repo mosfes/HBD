@@ -1,0 +1,158 @@
+body {
+    background: linear-gradient(135deg, #FF9C9C, #FFC4C4);
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Kanit', sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background-color: #79444C;
+    padding: 12px 24px;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 3s; /* Delay for the button */
+}
+
+.card2 {
+    background-color: #79444C;
+    padding: 12px 24px;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    position: relative;
+    
+}
+a:hover {
+    background-color: #8A5560;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    transform: translateY(5px);
+}
+
+.at {
+    width: 100vw;
+    margin-top: 40px;
+}
+
+        /* Snowflakes Animation */
+        .sparkles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowfall 10s linear infinite, float 8s ease-in-out infinite;
+        }
+
+/* Snowfall Animation */
+@keyframes snowfall {
+    0% {
+        transform: translateY(-10px) translateX(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) translateX(30px);
+        opacity: 0.4;
+    }
+}
+
+/* Float and random horizontal movement Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(50px) translateX(-20px);
+    }
+    100% {
+        transform: translateY(100vh) translateX(20px);
+    }
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#fadeButton {
+    animation: fadeIn 4s forwards; /* ค่อยๆ ปรากฏในเวลา 3 วินาที */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+.card2:hover {
+    background-color: #8A5560;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+}
+
+@media (max-height: 699px) {
+    .A {
+      display: none;  /* ซ่อน A เมื่อความสูงน้อยกว่า 700px */
+    }
+    .se {
+      display: block; /* แสดง se เมื่อความสูงน้อยกว่า 700px */
+    }
+    .tab{
+        display: none;
+    }
+  }
+  
+  @media (min-height: 701px) {
+    .se {
+      display: none;  /* ซ่อน se เมื่อความสูงมากกว่า 700px */
+    }
+    .A {
+      display: block; /* แสดง A เมื่อความสูงมากกว่า 700px */
+    }
+    .tab{
+        display: none;
+    }
+  }
+  @media (min-width: 1001px) {
+    .A {
+      display: none;  /* ตัวอย่าง: แสดง A */
+    }
+    .se {
+      display: none;   /* ตัวอย่าง: ซ่อน se */
+    }
+    .tab{
+        display: block;
+    }
+  }
+
+  

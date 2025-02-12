@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>HBD</title>
+    <style>
+        body {
+            overflow: hidden; /* Prevent scrollbars */
+        }
+        h1 {
+            color: white;
+            margin: 0 0 20px;
+            font-size: 5rem;
+            font-weight: 400;
+            opacity: 0;
+            animation: fadeIn 2s forwards; /* Fade in effect for each text */
+        }
+        h1:nth-of-type(1) {
+            animation-delay: 1s; /* Delay for first text */
+        }
+        h1:nth-of-type(2) {
+            animation-delay: 2s; /* Delay for second text */
+        }
+        
+        .material-icons {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        /* Add fade-out animation */
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Add fade-out class */
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        .animation-container {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 9999;
+            display: flex; /* Align boxes horizontally */
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .animated-box {
+            width: 10px;
+            background-color: white;
+            margin: 0 5px;
+            animation: bounce 1s infinite;
+        }
+
+        /* Different heights for each box */
+        .animated-box:nth-child(1) {
+            height: 40px;
+            animation-delay: 0.1s;
+        }
+        .animated-box:nth-child(2) {
+            height: 60px;
+            animation-delay: 0.2s;
+        }
+        .animated-box:nth-child(3) {
+            height: 50px;
+            animation-delay: 0.3s;
+        }
+        .animated-box:nth-child(4) {
+            height: 70px;
+            animation-delay: 0.4s;
+        }
+        .animated-box:nth-child(5) {
+            height: 45px;
+            animation-delay: 0.5s;
+        }
+
+        /* Style for the music toggle button */
+        .music-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10000; /* Ensure it's above other elements */
+        }
+
+        .music-toggle i {
+            font-size: 20px;
+        }
+
+        /* .at {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        } */
+
+
+        .card {
+            text-decoration: none;
+            color: white;
+        }
+
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: snowfall linear infinite;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <audio id="myAudio" src="audio/A1.mp3" autoplay loop></audio>
+
+    <!-- Music Toggle Button -->
+    <div class="music-toggle" onclick="toggleMusic()">
+        <i id="musicIcon" class="fas fa-volume-up"></i>
+    </div>
+
+    <h1>สวัสดี</h1>
+    <h1>ชื่อ</h1> 
+    <div class="at">
+        <div class="ab">
+            <a href="card.html" class="card" id="openCardBtn"><i style="padding-right:5px ;" class="fa-solid fa-cake-candles"></i> เปิดการ์ด</a>
+        </div>
+    </div>
+
+    <!-- Snowflakes -->
+    <div class="sparkles">
+        <div class="snowflake" style="top: 0%; left: 10%; width: 12px; height: 12px; animation-duration: 10s;"></div>
+        <div class="snowflake" style="top: 5%; left: 25%; width: 15px; height: 15px; animation-duration: 12s;"></div>
+        <div class="snowflake" style="top: 15%; left: 50%; width: 8px; height: 8px; animation-duration: 14s;"></div>
+        <div class="snowflake" style="top: 25%; left: 70%; width: 10px; height: 10px; animation-duration: 16s;"></div>
+        <div class="snowflake" style="top: 30%; left: 90%; width: 12px; height: 12px; animation-duration: 18s;"></div>
+        <div class="snowflake" style="top: 20%; left: 30%; width: 10px; height: 10px; animation-duration: 11s;"></div>
+        <div class="snowflake" style="top: 40%; left: 60%; width: 6px; height: 6px; animation-duration: 13s;"></div>
+        <div class="snowflake" style="top: 50%; left: 80%; width: 20px; height: 20px; animation-duration: 20s;"></div>
+        <div class="snowflake" style="top: 60%; left: 10%; width: 5px; height: 5px; animation-duration: 22s;"></div>
+        <div class="snowflake" style="top: 70%; left: 40%; width: 12px; height: 12px; animation-duration: 18s;"></div>
+        <div class="snowflake" style="top: 80%; left: 70%; width: 10px; height: 10px; animation-duration: 19s;"></div>
+        <div class="snowflake" style="top: 90%; left: 60%; width: 8px; height: 8px; animation-duration: 15s;"></div>
+    </div>
+
+
+    <script>
+        var audio = document.getElementById("myAudio");
+        var musicIcon = document.getElementById("musicIcon");
+        var isPlaying = true;
+    
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.classList.remove("fa-volume-up");
+                musicIcon.classList.add("fa-volume-mute");
+                localStorage.setItem('musicPlaying', 'false');
+            } else {
+                audio.play();
+                musicIcon.classList.remove("fa-volume-mute");
+                musicIcon.classList.add("fa-volume-up");
+                localStorage.setItem('musicPlaying', 'true');
+            }
+            isPlaying = !isPlaying;
+        }
+    
+       
+    
+        document.getElementById("openCardBtn").addEventListener("click", function(event) {
+            event.preventDefault();
+            localStorage.setItem('musicPlaying', isPlaying.toString());
+    
+            // Add fade-out class to elements
+            document.querySelectorAll('h1').forEach(function(element) {
+                element.classList.add('fade-out');
+            });
+            document.querySelector('.card').classList.add('fade-out');
+    
+            setTimeout(function() {
+                window.location.href = "card.html";
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
