@@ -158,9 +158,33 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        #start-screen {
+          position: fixed; /* or absolute, depending on your layout */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 10001; /* Higher than music toggle */
+          color: white;
+          font-size: 24px;
+          cursor: pointer;
+      }
+      #start-screen:hover{
+        opacity: 0.8;
+      }
     </style>
 </head>
 <body>
+
+    <div id="start-screen">
+        <p>Click</p>
+    </div>
+
     <audio id="myAudio" src="audio/A2.mp3" autoplay loop></audio>
 
     <!-- Music Toggle Button -->
@@ -196,23 +220,25 @@
     <script>
         var audio = document.getElementById("myAudio");
         var musicIcon = document.getElementById("musicIcon");
-        var isPlaying = true;
-    
+        var isPlaying = false; // Start with music off
+
+        // Function to toggle music
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
                 musicIcon.classList.remove("fa-volume-up");
                 musicIcon.classList.add("fa-volume-mute");
-                localStorage.setItem('musicPlaying', 'false');
+                 isPlaying = false;
+                 document.querySelector('.music-toggle span').textContent = 'Play Music';
             } else {
                 audio.play();
                 musicIcon.classList.remove("fa-volume-mute");
                 musicIcon.classList.add("fa-volume-up");
-                localStorage.setItem('musicPlaying', 'true');
+                isPlaying = true;
+                document.querySelector('.music-toggle span').textContent = 'Pause Music';
+
             }
-            isPlaying = !isPlaying;
         }
-    
        
     
         document.getElementById("openCardBtn").addEventListener("click", function(event) {
@@ -229,6 +255,20 @@
                 window.location.href = "card.html";
             }, 1000);
         });
+
+        document.getElementById("start-screen").addEventListener("click", function() {
+        this.style.display = "none"; // Hide start screen
+        toggleMusic(); // Start playing music
+
+        // Trigger animations (optional, if you want to ensure they start after the click)
+        document.querySelectorAll('.snowflake').forEach(el => {
+          el.style.animationPlayState = 'running';
+        });
+        document.querySelector('img').style.animationPlayState = 'running'; // For the image
+      });
+
     </script>
+
+    
 </body>
 </html>
